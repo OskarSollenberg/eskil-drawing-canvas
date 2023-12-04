@@ -7,10 +7,8 @@ let canDraw = true;
 let seconds = 10;
 
 let rect = canvasEl.getBoundingClientRect();
-
 canvasEl.width = rect.width * devicePixelRatio;
 canvasEl.height = rect.height * devicePixelRatio;
-
 context.scale(devicePixelRatio, devicePixelRatio);
 
 // setInterval(function () {
@@ -51,7 +49,7 @@ canvasEl.addEventListener("pointerup", function () {
 
 const resetBtn = document.querySelector("#resetButton");
 resetBtn.addEventListener("click", function () {
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvasEl.width, canvasEl.height);
 });
 
 function saveImage() {
