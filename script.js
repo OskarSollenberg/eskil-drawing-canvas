@@ -6,6 +6,13 @@ let canDraw = true;
 
 let seconds = 10;
 
+let rect = canvasEl.getBoundingClientRect();
+
+canvasEl.width = rect.width * devicePixelRatio;
+canvasEl.height = rect.height * devicePixelRatio;
+
+context.scale(devicePixelRatio, devicePixelRatio);
+
 // setInterval(function () {
 //     if (seconds <= 0) {
 //         canDraw = false;
