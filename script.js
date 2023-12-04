@@ -6,10 +6,13 @@ let canDraw = true;
 
 let seconds = 10;
 
-let rect = canvasEl.getBoundingClientRect();
-canvasEl.width = rect.width * devicePixelRatio;
-canvasEl.height = rect.height * devicePixelRatio;
-context.scale(devicePixelRatio, devicePixelRatio);
+// let rect = canvasEl.getBoundingClientRect();
+// canvasEl.width = rect.width * devicePixelRatio;
+// canvasEl.height = rect.height * devicePixelRatio;
+// context.scale(devicePixelRatio, devicePixelRatio);
+
+let heightRatio = 0.7;
+canvasEl.height = canvasEl.width * heightRatio;
 
 // setInterval(function () {
 //     if (seconds <= 0) {
@@ -24,8 +27,11 @@ context.scale(devicePixelRatio, devicePixelRatio);
 canvasEl.addEventListener("pointerdown", function (e) {
     isDrawing = true;
 
-    const x = e.clientX - canvasEl.offsetLeft;
-    const y = e.clientY - canvasEl.offsetTop;
+    // const x = e.clientX - canvasEl.offsetLeft;
+    // const y = e.clientY - canvasEl.offsetTop;
+
+    const x = ((e.offsetX * canvasEl.width) / canvasEl.clientWidth) | 0;
+    const y = ((e.offsetY * canvasEl.height) / canvasEl.clientHeight) | 0;
 
     context.beginPath();
     context.moveTo(x, y);
@@ -33,8 +39,11 @@ canvasEl.addEventListener("pointerdown", function (e) {
 
 canvasEl.addEventListener("pointermove", function (e) {
     if (canDraw && isDrawing) {
-        const x = e.clientX - canvasEl.offsetLeft;
-        const y = e.clientY - canvasEl.offsetTop;
+        // const x = e.clientX - canvasEl.offsetLeft;
+        // const y = e.clientY - canvasEl.offsetTop;
+
+        const x = ((e.offsetX * canvasEl.width) / canvasEl.clientWidth) | 0;
+        const y = ((e.offsetY * canvasEl.height) / canvasEl.clientHeight) | 0;
 
         context.lineTo(x, y);
         context.stroke();
@@ -52,6 +61,7 @@ resetBtn.addEventListener("click", function () {
     context.clearRect(0, 0, canvasEl.width, canvasEl.height);
 });
 
+// LOCAL STORGAE
 function saveImage() {
     // const canvas = {};
     localStorage.setItem("imgCanvas", canvasEl.toDataURL());
