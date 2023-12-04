@@ -4,16 +4,42 @@
     box-sizing: border-box;
 }
 
-main {
-    /* background: black; */
-    width: 100vw;
-    height: 100vh;
-
+body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5rem;
+    width: 100vw;
+    height: 100vh;
+}
+.card {
+    width: 90%;
+    height: 80%;
+    background: yellow;
+    border-radius: 5rem;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.col1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.col2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 canvas {
